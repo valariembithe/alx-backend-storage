@@ -26,6 +26,7 @@ def data_cacher(method: Callable) -> Callable:
         return result
     return invoker
 
+
 @data_cacher
 def get_page(url: str) -> str:
     """ obtain the HTML content of a particular URL and returns it."""
