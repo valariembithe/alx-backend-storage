@@ -18,7 +18,9 @@ def count_calls(method: Callable) -> Callable:
 
 def call_history(method: Callable) -> Callable:
     '''Returns the method's output after storing its inputs and output.'''
+    @wraps(method)
     def invoker(self, *args, **kwargs):
+        '''Returns the output after storing the input and output'''
         in_key = '{}:inputs'.format(method.__qualname__)
         out_key = '{}:outputs'.format(method.__qualname__)
         if isinstance(self._redis, redis.Redis):
